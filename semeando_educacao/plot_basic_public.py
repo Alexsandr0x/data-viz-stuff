@@ -95,7 +95,7 @@ for school in dataset[0] + dataset[1] + dataset[2]:
             if k not in conceito_auxilio:
                 conceito_auxilio[k] = 0
             conceito_auxilio[k] += v
-
+"""
 plt.clf()
 mpl.rcParams.update(mpl.rcParamsDefault)
 plt.title('Idade dos Alunos')
@@ -187,12 +187,27 @@ plt.show()
 
 plt.clf()
 mpl.rcParams.update(mpl.rcParamsDefault)
-plt.title('Variação de auto avaliação')
+plt.title('Variação de auto avaliação quanto a conhecimento do ingresso a'
+          ' universidade')
 x = [i for i in nota_ingresso['pre'] if isinstance(i, int)]
 y = [i for i in nota_ingresso['pos'] if isinstance(i, int)]
 xy = [y_id - x_id for x_id, y_id in zip(x, y)]
 plt.hist(xy, bins=np.arange(-9, 10)-0.5, edgecolor='black', linewidth=1.2)
 plt.xticks(range(-10, 10))
+
+plt.tight_layout()
+plt.savefig('var_nota_ingresso.png', bbox_inches="tight")
+plt.show()
+"""
+plt.clf()
+mpl.rcParams.update(mpl.rcParamsDefault)
+plt.title('Variação de auto avaliação quanto a conhecimento do ingresso a'
+          ' universidade')
+x = [i for i in nota_auxilio['pre'] if isinstance(i, int)]
+y = [i for i in nota_auxilio['pos'] if isinstance(i, int)]
+xy = [y_id - x_id for x_id, y_id in zip(x, y)]
+plt.hist(xy, bins=np.arange(-10, 11)-0.5, edgecolor='black', linewidth=1.2)
+plt.xticks(range(-10, 11))
 
 plt.tight_layout()
 plt.savefig('var_nota_ingresso.png', bbox_inches="tight")
