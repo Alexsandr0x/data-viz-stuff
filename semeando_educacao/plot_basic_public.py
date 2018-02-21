@@ -100,8 +100,7 @@ plt.clf()
 mpl.rcParams.update(mpl.rcParamsDefault)
 plt.title('Idade dos Alunos')
 plt.xlabel('Idade')
-n, bins, patches = plt.hist(age_list, 10)
-hist, edges = np.histogram(age_list, density=True)
+plt.hist(age_list, 10)
 plt.tight_layout()
 plt.savefig('idade.png', bbox_inches="tight")
 plt.show()
@@ -184,4 +183,17 @@ plt.bar(y_pos, values, align='center', alpha=0.5)
 plt.xticks(y_pos, labels)
 plt.tight_layout()
 plt.savefig('conceito_auxilio.png', bbox_inches="tight")
+plt.show()
+
+plt.clf()
+mpl.rcParams.update(mpl.rcParamsDefault)
+plt.title('Variação de auto avaliação')
+x = [i for i in nota_ingresso['pre'] if isinstance(i, int)]
+y = [i for i in nota_ingresso['pos'] if isinstance(i, int)]
+xy = [y_id - x_id for x_id, y_id in zip(x, y)]
+plt.hist(xy, bins=np.arange(-9, 10)-0.5, edgecolor='black', linewidth=1.2)
+plt.xticks(range(-10, 10))
+
+plt.tight_layout()
+plt.savefig('var_nota_ingresso.png', bbox_inches="tight")
 plt.show()
